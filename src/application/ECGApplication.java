@@ -268,7 +268,7 @@ public class ECGApplication extends Application {
 			container = new VBox(fileContainer, group1Container, group2Container, group3Container);
 
 			borderPane = new BorderPane(container);
-			Scene scene = new Scene(borderPane, 600, 530);
+			Scene scene = new Scene(borderPane, systemDimension.getWidth(), systemDimension.getHeight());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("ECG Visualization");
 			primaryStage.show();
