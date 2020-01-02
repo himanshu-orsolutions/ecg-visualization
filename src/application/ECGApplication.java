@@ -149,7 +149,7 @@ public class ECGApplication extends Application {
 				try {
 					ECGRecord record = ECGReportParser.parseECGRecord(Paths.get(selectedFile.getPath()));
 					chooseFileButton.setDisable(true);
-					ExecutorService taskExecutor = Executors.newCachedThreadPool();
+					ExecutorService taskExecutor = Executors.newFixedThreadPool(12);
 
 					ChartInfo iGraph = new ECGCoordinateBuilder().build(record, "I");
 					ChartInfo aVRGraph = new ECGCoordinateBuilder().build(record, "aVR");
@@ -165,18 +165,18 @@ public class ECGApplication extends Application {
 					ChartInfo v6Graph = new ECGCoordinateBuilder().build(record, "v6");
 
 					// Submitting the tasks
-					taskExecutor.submit(() -> iGraphHandler.start(iGraph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(aVRGraph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v1Graph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v4Graph));
-					taskExecutor.submit(() -> iiGraphHandler.start(iiGraph));
-					taskExecutor.submit(() -> aVLGraphHandler.start(aVLGraph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v2Graph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v5Graph));
-					taskExecutor.submit(() -> iiiGraphHandler.start(iiiGraph));
-					taskExecutor.submit(() -> aVFGraphHandler.start(aVFGraph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v3Graph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(v6Graph));
+					taskExecutor.execute(() -> iGraphHandler.start(iGraph));
+					taskExecutor.execute(() -> aVRGraphHandler.start(aVRGraph));
+					taskExecutor.execute(() -> v1GraphHandler.start(v1Graph));
+					taskExecutor.execute(() -> v4GraphHandler.start(v4Graph));
+					taskExecutor.execute(() -> iiGraphHandler.start(iiGraph));
+					taskExecutor.execute(() -> aVLGraphHandler.start(aVLGraph));
+					taskExecutor.execute(() -> v2GraphHandler.start(v2Graph));
+					taskExecutor.execute(() -> v5GraphHandler.start(v5Graph));
+					taskExecutor.execute(() -> iiiGraphHandler.start(iiiGraph));
+					taskExecutor.execute(() -> aVFGraphHandler.start(aVFGraph));
+					taskExecutor.execute(() -> v3GraphHandler.start(v3Graph));
+					taskExecutor.execute(() -> v6GraphHandler.start(v6Graph));
 				} catch (IOException ioException) {
 					showErrorMessage("Error reading the file.");
 				}

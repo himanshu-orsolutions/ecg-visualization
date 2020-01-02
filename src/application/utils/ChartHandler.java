@@ -70,7 +70,7 @@ public class ChartHandler {
 	 */
 	public void start(ChartInfo graph) {
 
-		ExecutorService taskExecutor = Executors.newCachedThreadPool();
+		ExecutorService taskExecutor = Executors.newFixedThreadPool(1);
 		taskExecutor.execute(() -> {
 			try {
 				List<Coordinate> coordinates = graph.getCoordinates();
