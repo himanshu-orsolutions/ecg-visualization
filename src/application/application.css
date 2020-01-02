@@ -1,0 +1,18 @@
+.chart{
+	-fx-background-color: #ffff;
+	-fx-gap-start-and-end: 2.0px;
+}
+.chart-plot-background {
+	-fx-background-image: url("ecg.png"); 
+	-fx-background-size: 300.0px;
+}
+.axis {
+    -fx-tick-length: 0.0;
+    -fx-minor-tick-length: 0.0;
+}
+.label {
+	-fx-background-color: darkgray ;
+}
+.chart-series-line{
+	-fx-stroke: black ;
+}
