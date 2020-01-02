@@ -43,12 +43,18 @@ public class ECGApplication extends Application {
 	/**
 	 * The chart handlers
 	 */
-	ChartHandler aVRGraphHandler = new ChartHandler();
-	ChartHandler aVLGraphHandler = new ChartHandler();
-	ChartHandler aVFGraphHandler = new ChartHandler();
 	ChartHandler iGraphHandler = new ChartHandler();
+	ChartHandler aVRGraphHandler = new ChartHandler();
+	ChartHandler v1GraphHandler = new ChartHandler();
+	ChartHandler v4GraphHandler = new ChartHandler();
 	ChartHandler iiGraphHandler = new ChartHandler();
+	ChartHandler aVLGraphHandler = new ChartHandler();
+	ChartHandler v2GraphHandler = new ChartHandler();
+	ChartHandler v5GraphHandler = new ChartHandler();
 	ChartHandler iiiGraphHandler = new ChartHandler();
+	ChartHandler aVFGraphHandler = new ChartHandler();
+	ChartHandler v3GraphHandler = new ChartHandler();
+	ChartHandler v6GraphHandler = new ChartHandler();
 
 	/**
 	 * The GUI components
@@ -59,26 +65,44 @@ public class ECGApplication extends Application {
 	HBox group1Container;
 	HBox group2Container;
 	HBox group3Container;
-	VBox aVFChartContainer;
-	VBox aVRChartContainer;
-	VBox aVLChartContainer;
 	VBox iChartContainer;
+	VBox aVRChartContainer;
+	VBox v1ChartContainer;
+	VBox v4ChartContainer;
 	VBox iiChartContainer;
+	VBox aVLChartContainer;
+	VBox v2ChartContainer;
+	VBox v5ChartContainer;
 	VBox iiiChartContainer;
+	VBox aVFChartContainer;
+	VBox v3ChartContainer;
+	VBox v6ChartContainer;
 	TextField filePathField;
 	Button chooseFileButton;
-	LineChart<Number, Number> aVRLineChart;
-	LineChart<Number, Number> aVLLineChart;
-	LineChart<Number, Number> aVFLineChart;
 	LineChart<Number, Number> iLineChart;
+	LineChart<Number, Number> aVRLineChart;
+	LineChart<Number, Number> v1LineChart;
+	LineChart<Number, Number> v4LineChart;
 	LineChart<Number, Number> iiLineChart;
+	LineChart<Number, Number> aVLLineChart;
+	LineChart<Number, Number> v2LineChart;
+	LineChart<Number, Number> v5LineChart;
 	LineChart<Number, Number> iiiLineChart;
-	Label aVFChartLabel;
-	Label aVRChartLabel;
-	Label aVLChartLabel;
+	LineChart<Number, Number> aVFLineChart;
+	LineChart<Number, Number> v3LineChart;
+	LineChart<Number, Number> v6LineChart;
 	Label iChartLabel;
+	Label aVRChartLabel;
+	Label v1ChartLabel;
+	Label v4ChartLabel;
 	Label iiChartLabel;
+	Label aVLChartLabel;
+	Label v2ChartLabel;
+	Label v5ChartLabel;
 	Label iiiChartLabel;
+	Label aVFChartLabel;
+	Label v3ChartLabel;
+	Label v6ChartLabel;
 
 	/**
 	 * Shows the error message on pop-up
@@ -99,12 +123,18 @@ public class ECGApplication extends Application {
 		try {
 			Dimension systemDimension = Toolkit.getDefaultToolkit().getScreenSize();
 
-			aVRLineChart = aVRGraphHandler.init();
-			aVFLineChart = aVFGraphHandler.init();
-			aVLLineChart = aVLGraphHandler.init();
 			iLineChart = iGraphHandler.init();
+			aVRLineChart = aVRGraphHandler.init();
+			v1LineChart = v1GraphHandler.init();
+			v4LineChart = v4GraphHandler.init();
 			iiLineChart = iiGraphHandler.init();
+			aVLLineChart = aVLGraphHandler.init();
+			v2LineChart = v2GraphHandler.init();
+			v5LineChart = v5GraphHandler.init();
 			iiiLineChart = iiiGraphHandler.init();
+			aVFLineChart = aVFGraphHandler.init();
+			v3LineChart = v3GraphHandler.init();
+			v6LineChart = v6GraphHandler.init();
 
 			filePathField = new TextField();
 			filePathField.setPrefSize(systemDimension.getWidth() * 0.9, 16);
@@ -121,71 +151,119 @@ public class ECGApplication extends Application {
 					chooseFileButton.setDisable(true);
 					ExecutorService taskExecutor = Executors.newCachedThreadPool();
 
-					ChartInfo aVFGraph = new ECGCoordinateBuilder().build(record, "aVF");
-					ChartInfo aVRGraph = new ECGCoordinateBuilder().build(record, "aVR");
-					ChartInfo aVLGraph = new ECGCoordinateBuilder().build(record, "aVL");
 					ChartInfo iGraph = new ECGCoordinateBuilder().build(record, "I");
+					ChartInfo aVRGraph = new ECGCoordinateBuilder().build(record, "aVR");
+					ChartInfo v1Graph = new ECGCoordinateBuilder().build(record, "v1");
+					ChartInfo v4Graph = new ECGCoordinateBuilder().build(record, "v4");
 					ChartInfo iiGraph = new ECGCoordinateBuilder().build(record, "II");
+					ChartInfo aVLGraph = new ECGCoordinateBuilder().build(record, "aVL");
+					ChartInfo v2Graph = new ECGCoordinateBuilder().build(record, "v2");
+					ChartInfo v5Graph = new ECGCoordinateBuilder().build(record, "v5");
 					ChartInfo iiiGraph = new ECGCoordinateBuilder().build(record, "III");
+					ChartInfo aVFGraph = new ECGCoordinateBuilder().build(record, "aVF");
+					ChartInfo v3Graph = new ECGCoordinateBuilder().build(record, "v3");
+					ChartInfo v6Graph = new ECGCoordinateBuilder().build(record, "v6");
 
 					// Submitting the tasks
-					taskExecutor.submit(() -> aVFGraphHandler.start(aVFGraph));
-					taskExecutor.submit(() -> aVRGraphHandler.start(aVRGraph));
-					taskExecutor.submit(() -> aVLGraphHandler.start(aVLGraph));
 					taskExecutor.submit(() -> iGraphHandler.start(iGraph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(aVRGraph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v1Graph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v4Graph));
 					taskExecutor.submit(() -> iiGraphHandler.start(iiGraph));
+					taskExecutor.submit(() -> aVLGraphHandler.start(aVLGraph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v2Graph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v5Graph));
 					taskExecutor.submit(() -> iiiGraphHandler.start(iiiGraph));
+					taskExecutor.submit(() -> aVFGraphHandler.start(aVFGraph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v3Graph));
+					taskExecutor.submit(() -> aVRGraphHandler.start(v6Graph));
 				} catch (IOException ioException) {
 					showErrorMessage("Error reading the file.");
 				}
 			});
 
-			aVFChartLabel = new Label("aVF");
-			aVFChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
-			aVFChartLabel.setAlignment(Pos.CENTER);
-
-			aVRChartLabel = new Label("aVR");
-			aVRChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
-			aVRChartLabel.setAlignment(Pos.CENTER);
-
-			aVLChartLabel = new Label("aVL");
-			aVLChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
-			aVLChartLabel.setAlignment(Pos.CENTER);
-
 			iChartLabel = new Label("I");
-			iChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
+			iChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
 			iChartLabel.setAlignment(Pos.CENTER);
 
+			aVRChartLabel = new Label("aVR");
+			aVRChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			aVRChartLabel.setAlignment(Pos.CENTER);
+
+			v1ChartLabel = new Label("V1");
+			v1ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v1ChartLabel.setAlignment(Pos.CENTER);
+
+			v4ChartLabel = new Label("V4");
+			v4ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v4ChartLabel.setAlignment(Pos.CENTER);
+
 			iiChartLabel = new Label("II");
-			iiChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
+			iiChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
 			iiChartLabel.setAlignment(Pos.CENTER);
 
+			aVLChartLabel = new Label("aVL");
+			aVLChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			aVLChartLabel.setAlignment(Pos.CENTER);
+
+			v2ChartLabel = new Label("V2");
+			v2ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v2ChartLabel.setAlignment(Pos.CENTER);
+
+			v5ChartLabel = new Label("V5");
+			v5ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v5ChartLabel.setAlignment(Pos.CENTER);
+
 			iiiChartLabel = new Label("III");
-			iiiChartLabel.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.05);
+			iiiChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
 			iiiChartLabel.setAlignment(Pos.CENTER);
 
-			aVFChartContainer = new VBox(aVFLineChart, aVFChartLabel);
-			aVRChartContainer = new VBox(aVRLineChart, aVRChartLabel);
-			aVLChartContainer = new VBox(aVLLineChart, aVLChartLabel);
+			aVFChartLabel = new Label("aVF");
+			aVFChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			aVFChartLabel.setAlignment(Pos.CENTER);
+
+			v3ChartLabel = new Label("V3");
+			v3ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v3ChartLabel.setAlignment(Pos.CENTER);
+
+			v6ChartLabel = new Label("V6");
+			v6ChartLabel.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.05);
+			v6ChartLabel.setAlignment(Pos.CENTER);
+
 			iChartContainer = new VBox(iLineChart, iChartLabel);
+			aVRChartContainer = new VBox(aVRLineChart, aVRChartLabel);
+			v1ChartContainer = new VBox(v1LineChart, v1ChartLabel);
+			v4ChartContainer = new VBox(v4LineChart, v4ChartLabel);
 			iiChartContainer = new VBox(iiLineChart, iiChartLabel);
+			aVLChartContainer = new VBox(aVLLineChart, aVLChartLabel);
+			v2ChartContainer = new VBox(v2LineChart, v2ChartLabel);
+			v5ChartContainer = new VBox(v5LineChart, v5ChartLabel);
 			iiiChartContainer = new VBox(iiiLineChart, iiiChartLabel);
+			aVFChartContainer = new VBox(aVFLineChart, aVFChartLabel);
+			v3ChartContainer = new VBox(v3LineChart, v3ChartLabel);
+			v6ChartContainer = new VBox(v6LineChart, v6ChartLabel);
 
 			fileContainer = new HBox(filePathField, chooseFileButton);
 			HBox.setMargin(filePathField, new Insets(2, 2, 2, 2));
 			HBox.setMargin(chooseFileButton, new Insets(2, 2, 2, 0));
 
-			group1Container = new HBox(aVRChartContainer, aVFChartContainer);
-			HBox.setMargin(aVRChartContainer, new Insets(2, 2, 2, 2));
-			HBox.setMargin(aVFChartContainer, new Insets(2, 2, 2, 0));
+			group1Container = new HBox(iChartContainer, aVRChartContainer, v1ChartContainer, v4ChartContainer);
+			HBox.setMargin(iChartContainer, new Insets(2, 2, 2, 2));
+			HBox.setMargin(aVRChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v1ChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v4ChartContainer, new Insets(2, 2, 2, 0));
 
-			group2Container = new HBox(aVLChartContainer, iChartContainer);
-			HBox.setMargin(aVLChartContainer, new Insets(2, 2, 2, 2));
-			HBox.setMargin(iChartContainer, new Insets(2, 2, 2, 0));
-
-			group3Container = new HBox(iiChartContainer, iiiChartContainer);
+			group2Container = new HBox(iiChartContainer, aVLChartContainer, v2ChartContainer, v5ChartContainer);
 			HBox.setMargin(iiChartContainer, new Insets(2, 2, 2, 2));
-			HBox.setMargin(iiiChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(aVLChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v2ChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v5ChartContainer, new Insets(2, 2, 2, 0));
+
+			group3Container = new HBox(iiiChartContainer, aVFChartContainer, v3ChartContainer, v6ChartContainer);
+			HBox.setMargin(iiiChartContainer, new Insets(2, 2, 2, 2));
+			HBox.setMargin(aVFChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v3ChartContainer, new Insets(2, 2, 2, 0));
+			HBox.setMargin(v6ChartContainer, new Insets(2, 2, 2, 0));
 
 			container = new VBox(fileContainer, group1Container, group2Container, group3Container);
 
@@ -195,6 +273,7 @@ public class ECGApplication extends Application {
 			primaryStage.setTitle("ECG Visualization");
 			primaryStage.show();
 		} catch (Exception e) {
+			e.printStackTrace();
 			showErrorMessage("Error initiating the views.");
 		}
 	}

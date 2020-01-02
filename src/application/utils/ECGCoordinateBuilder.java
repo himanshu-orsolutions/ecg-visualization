@@ -121,23 +121,41 @@ public class ECGCoordinateBuilder {
 				double value = 0d;
 
 				switch (type) {
-				case "aVF":
-					value = event.getAmplitude().getaVF();
+				case "I":
+					value = event.getAmplitude().getI();
 					break;
 				case "aVR":
 					value = event.getAmplitude().getaVR();
 					break;
-				case "aVL":
-					value = event.getAmplitude().getaVL();
+				case "v1":
+					value = event.getAmplitude().getV1();
 					break;
-				case "I":
-					value = event.getAmplitude().getI();
+				case "v4":
+					value = event.getAmplitude().getV4();
 					break;
 				case "II":
 					value = event.getAmplitude().getIi();
 					break;
+				case "aVL":
+					value = event.getAmplitude().getaVL();
+					break;
+				case "v2":
+					value = event.getAmplitude().getV2();
+					break;
+				case "v5":
+					value = event.getAmplitude().getV5();
+					break;
 				case "III":
 					value = event.getAmplitude().getIii();
+					break;
+				case "aVF":
+					value = event.getAmplitude().getaVF();
+					break;
+				case "v3":
+					value = event.getAmplitude().getV3();
+					break;
+				case "v6":
+					value = event.getAmplitude().getV6();
 					break;
 				}
 

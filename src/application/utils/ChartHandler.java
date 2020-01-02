@@ -57,7 +57,7 @@ public class ChartHandler {
 		chart.getData().add(series);
 		Dimension systemDimension = Toolkit.getDefaultToolkit().getScreenSize();
 
-		chart.setPrefSize(systemDimension.getWidth() * 0.5, systemDimension.getHeight() * 0.33);
+		chart.setPrefSize(systemDimension.getWidth() * 0.25, systemDimension.getHeight() * 0.33);
 
 		// Setting background image on line chart
 		chart.getStylesheets().add("application/application.css");
