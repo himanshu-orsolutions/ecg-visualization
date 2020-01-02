@@ -11,3 +11,5 @@ y=a(x)+b
 y=a(x^2)+b(x)+c
 ```
 - On UI, the user can select the raw data file and the processing will start immediately.
+
+**Note:** To start the application, run ECGApplication.java
